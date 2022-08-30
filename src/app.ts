@@ -27,7 +27,7 @@ app.use(errorHandler);
 async function connectToMongoDB() {
   try {
     await mongoose.connect(
-      "mongodb+srv://FaudSkury:695001019@cluster0.v1tgq.mongodb.net/blogApp?retryWrites=true&w=majority"
+     
     );
     console.log("Connected");
   } catch (error) {
