@@ -22,7 +22,7 @@ const errorHandler = (err, req, res, next) => {
 app.use(errorHandler);
 async function connectToMongoDB() {
     try {
-        await mongoose_1.default.connect("mongodb+srv://FaudSkury:695001019@cluster0.v1tgq.mongodb.net/blogApp?retryWrites=true&w=majority");
+        await mongoose_1.default.connect("");
         console.log("Connected");
     }
     catch (error) {
