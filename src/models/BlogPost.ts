@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 export interface IblogPost {
-  author: string;
+  author: mongoose.Schema.Types.ObjectId;
   title: string;
   content: string;
   tags: string[];
@@ -11,7 +11,7 @@ export interface IblogPost {
 const { Schema } = mongoose;
 
 const blogPostSchema = new Schema<IblogPost>({
-  author: { type: String, required: true },
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   title: { type: String, required: true },
   content: { type: String, required: true },
   tags: { type: [String], required: true },

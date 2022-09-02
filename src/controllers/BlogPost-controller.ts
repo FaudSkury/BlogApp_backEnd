@@ -1,14 +1,21 @@
 import { RequestHandler } from "express";
 import BlogPost, { IblogPost } from "../models/BlogPost";
-
+import User, { IUser } from "../models/User";
 export const addBlogPost: RequestHandler = async (req, res, next) => {
   const { title, content, author } = req.body as IblogPost;
   const tags = req.body.tags as string;
   const splitedTags = tags.split(" ");
   const currentDate = new Date().toLocaleString();
 
+  let foundUser: IUser;
+  try {
+    foundUser = (await User.findOne({ email: author })) as IUser;
+  } catch (error) {
+    return next(error);
+  }
+
   const newBlogPost = new BlogPost({
-    author,
+    author: foundUser,
     title,
     content,
     tags: splitedTags,

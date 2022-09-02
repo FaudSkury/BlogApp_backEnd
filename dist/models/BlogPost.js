@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const { Schema } = mongoose_1.default;
 const blogPostSchema = new Schema({
-    author: { type: String, required: true },
+    author: { type: mongoose_1.default.Schema.Types.ObjectId, ref: "User", required: true },
     title: { type: String, required: true },
     content: { type: String, required: true },
     tags: { type: [String], required: true },
